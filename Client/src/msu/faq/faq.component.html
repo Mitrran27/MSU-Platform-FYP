@@ -1,0 +1,90 @@
+<div class="container-fluid">
+  <div class="container h3 text-secondary my-3 ff-inter">
+    Frequently Asked Questions
+  </div>
+  <div class="container">
+    <p-table
+      #dt1
+      [globalFilterFields]="['title', 'content', 'topic', 'user.fullName']"
+      [paginator]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      [value]="faqs"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} forum posts"
+      dataKey="id"
+    >
+      <ng-template pTemplate="caption">
+        <div class="flex">
+              <span class="p-input-icon-left ml-auto">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input (input)="dt1.filterGlobal(getInput($event), 'contains')" pInputText placeholder="Search keyword"
+                       type="text"/>
+            </span>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th width="65%">
+            <div class="flex align-items-center">
+              Forum
+            </div>
+          </th>
+          <th>
+            <div class="flex align-items-center">
+              Topic
+              <p-columnFilter display="menu" field="topic" type="text"></p-columnFilter>
+            </div>
+          </th>
+          <th>
+            <div class="flex align-items-center">
+              Faculty
+              <p-columnFilter [showAddButton]="false" [showMatchModes]="false" [showOperator]="false" display="menu"
+                              field="user.fullName" matchMode="in">
+                <ng-template pTemplate="header">
+                  <div class="px-3 pt-3 pb-0">
+                    <span class="font-bold">Faculty Picker</span>
+                  </div>
+                </ng-template>
+                <ng-template let-filter="filterCallback" let-value pTemplate="filter">
+                  <p-multiSelect (onChange)="filter($event.value)" [ngModel]="value" [options]="users"
+                                 optionLabel="fullName" placeholder="Any">
+                    <ng-template let-u pTemplate="item">
+                      <div class="inline-block vertical-align-middle">
+                        <span class="ml-1 mt-1">{{ u.fullName }}</span>
+                      </div>
+                    </ng-template>
+                  </p-multiSelect>
+                </ng-template>
+              </p-columnFilter>
+            </div>
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template let-forum pTemplate="body">
+        <tr>
+          <td class="ff-inter">
+            <div class="h5 fs-7 fw-bold">
+              <a [href]="'/forum/'+forum.id"
+                 target="_blank">{{forum.title}}</a>
+              <span *ngIf="forum.faq"
+                    class="text-danger fw-bold ps-1">[FAQ]</span>
+            </div>
+            <span class="fs-8">{{ forum.content }}</span>
+          </td>
+          <td>
+            <span class="fs-7 ff-inter">{{forum.topic}}</span>
+          </td>
+          <td>
+            <span class="fs-7 ff-inter">{{forum.user.fullName}}</span>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="7">No forums found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

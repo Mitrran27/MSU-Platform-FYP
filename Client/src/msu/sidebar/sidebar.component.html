@@ -1,0 +1,56 @@
+<div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark h-100" style="width: 280px;">
+  <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none" href="/">
+    <span class="fs-4 text-center fw-bold ff-inter">MSU Learning Platform</span>
+  </a>
+  <hr>
+  <ul class="nav nav-pills flex-column mb-auto ff-poppins gap-2">
+    <li class="nav-item">
+      <a [class.active]="url==='dashboard'" aria-current="page" class="nav-link text-white" href="/dashboard">
+        <i class="fa-solid fa-school pe-3"></i>
+        Dashboard
+      </a>
+    </li>
+    <li class="nav-item">
+      <a [class.active]="url ==='forums'" aria-current="page" class="nav-link text-white" href="/forums">
+        <i class="fa-solid fa-blog pe-3"></i>
+        Forums
+      </a>
+    </li>
+    <li class="nav-item">
+      <a [class.active]="url ==='announcements'" aria-current="page" class="nav-link text-white" href="/announcements">
+        <i class="fa-solid fa-bullhorn pe-3"></i>
+        Announcements
+      </a>
+    </li>
+    <li class="nav-item">
+      <a [class.active]="url ==='resources'" aria-current="page" class="nav-link text-white" href="/resources">
+        <i class="fa-solid fa-file-lines pe-3"></i>
+        Resources
+      </a>
+    </li>
+    <li class="nav-item">
+      <a [class.active]="url ==='faq'" aria-current="page" class="nav-link text-white" href="/faq">
+        <i class="fa-regular fa-circle-question pe-3"></i>
+        FAQ
+      </a>
+    </li>
+    <li class="nav-item">
+      <a [class.active]="url ==='instant-chat'" aria-current="page" class="nav-link text-white" href="/instant-chat">
+        <i class="fa-solid fa-comments pe-3"></i>
+        Instant Chat
+      </a>
+    </li>
+    <li class="nav-item">
+    <a [class.active]="url ==='profile'" aria-current="page" class="nav-link text-white" href="/profile">
+      <i class="fa-solid fa-id-card pe-3"></i>
+      My Profile
+    </a>
+    </li>
+  </ul>
+  <hr>
+  <div class="logout-btn mx-auto">
+    <button class="btn btn-sm btn-danger ff-inter" (click)="logOut()">
+      <i class="fa-solid fa-right-from-bracket"></i> Logout
+    </button>
+  </div>
+</div>

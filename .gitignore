@@ -1,0 +1,36 @@
+# Node
+node_modules/
+
+# Angular cache (IMPORTANT)
+.angular/
+
+# Frontend builds
+dist/
+build/
+.next/
+out/
+
+# Java / Maven
+target/
+
+# ML / AI models (YOUR MAIN ISSUE)
+*.pt
+*.pth
+*.safetensors
+
+# Python / binaries
+*.dll
+*.lib
+*.pyd
+
+# Logs & env
+*.log
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

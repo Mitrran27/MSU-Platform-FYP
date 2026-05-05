@@ -1,0 +1,81 @@
+<div class="forum-detail container-fluid w-100 h-100 p-0 m-0">
+  <div class="container">
+    <div class="forum-container p-2 mt-1 overflow-y-auto">
+      <div class="forum-card card mb-2 p-2 bg-white shadow w-75 mx-auto">
+        <div class="user-info p-2 d-flex flex-row align-items-center">
+          <img alt="teacher" src="../../../assets/teacher.png" width="45">
+          <div class="d-flex px-2  flex-column justify-content-start align-items-start small">
+            <span>{{forum.user?.fullName}}</span>
+            <span class="small text-body-tertiary">{{forum.postedOn | date:'short'}}</span>
+          </div>
+          <div class="text-danger d-flex ff-inter flex-grow-1 justify-content-end">
+            <div class="form-check form-switch">
+              <input (change)="updateForumFaq(forum.id)" [(ngModel)]="forum.faq" checked
+                     class="form-check-input" id="flexSwitchCheckChecked" role="switch" type="checkbox">
+              <label class="form-check-label" for="flexSwitchCheckChecked">FAQ</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="title px-2 fw-bold">
+          {{forum.title}}
+        </div>
+        <div class="content px-2 ff-inter overflow-auto" style="height: fit-content;max-height: 100px">
+          {{forum.content}}
+          <!--        <a class="px-2" href="/">see more</a>-->
+        </div>
+        <hr>
+        <div class="actions d-flex justify-content-around ff-inter mb-2">
+          <button (click)="likeOrDislike(forum.userLiked || false)"
+                  class="btn p-0 shadow-none like d-flex align-items-center">
+            <i *ngIf="!forum.userLiked" class="fa-regular fa-thumbs-up fs-5"></i>
+            <i *ngIf="forum.userLiked" class="fa-solid fa-thumbs-up"></i>
+            <span class="small px-2">Like</span>
+            <span>({{forum.likes}})</span>
+          </button>
+          <button (click)="toggleCommentSection()" class="btn p-0 shadow-none comment d-flex align-items-center">
+            <i class="fa-regular fa-comment fs-5 "></i>
+            <span class="small px-2">Comments</span>
+            <span>({{forum.forumComments?.length}})</span>
+          </button>
+        </div>
+        <div *ngIf="showCommentBox"
+             class="comment-section d-flex flex-column align-items-end justify-content-end w-100 h-100 bg-body-secondary"
+             style="max-height: 600px;min-height: 300px">
+          <div class="comments flex-grow-1 overflow-auto w-100 ff-inter">
+            <div class="comments-container d-flex flex-column w-100 gap-2 mt-2">
+              <div *ngFor="let c of forum.forumComments" class="card p-2 ms-2" style="width: fit-content">
+                <div class="comment-user-info d-flex flex-row align-items-center gap-1">
+                  <img alt="facultyImage" height="30" src="assets/teacher.png" width="30">
+                  <div class="small">{{c.user.fullName}}
+                    <span *ngIf="c.user.id === forum.user?.id" class="fs-9 text-success ps-3">
+                    (Author)
+                  </span>
+                  </div>
+                </div>
+                <div class="cmnt mt-1">
+                  <div class="fs-7 ff-poppins">{{c.comment}}</div>
+                  <span
+                    class="d-flex justify-content-end align-items-end fs-9 w-100">{{c.commentedOn | date:'short'}}</span>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+          <div class="new-comment m-1 w-100 p-2">
+            <div class="input-group mb-1">
+              <span class="input-group-text">Comment</span>
+              <input [(ngModel)]="comment.comment" aria-label="Amount (to the nearest dollar)" class="form-control"
+                     name="comment" type="text">
+              <button (click)="addNewComment()" class="input-group-text btn btn-primary">
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

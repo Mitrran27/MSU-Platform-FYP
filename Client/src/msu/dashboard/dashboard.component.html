@@ -1,0 +1,230 @@
+<div class="container-fluid">
+  <div class="row mt-2">
+    <div class="col-3 ff-inter">
+      <div class="card p-3">
+        <div class="h6">
+          Active users
+        </div>
+        <span class="fs-3 text-secondary">
+         {{activeUsers}}
+        </span>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="card p-3">
+        <div class="h6">
+          Registered Users
+        </div>
+        <span class="fs-3 text-secondary">
+         {{registerUsers}}
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-8">
+      <div class="forums">
+        <div class="h6 ff-inter text-secondary mt-2">Latest Forums</div>
+        <p-table
+          #dt1
+          [globalFilterFields]="['title', 'content', 'topic', 'user.fullName']"
+          [paginator]="true"
+          [rowsPerPageOptions]="[10, 25, 50]"
+          [rows]="10"
+          [showCurrentPageReport]="true"
+          [value]="forums"
+          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} forum posts"
+          dataKey="id"
+        >
+          <ng-template pTemplate="caption">
+            <div class="flex">
+              <span class="p-input-icon-left ml-auto">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input (input)="dt1.filterGlobal(getInput($event), 'contains')" pInputText placeholder="Search keyword"
+                       type="text"/>
+            </span>
+            </div>
+          </ng-template>
+          <ng-template pTemplate="header">
+            <tr>
+              <th width="65%">
+                <div class="flex align-items-center">
+                  Forum
+                </div>
+              </th>
+              <th>
+                <div class="flex align-items-center">
+                  Topic
+                  <p-columnFilter display="menu" field="topic" type="text"></p-columnFilter>
+                </div>
+              </th>
+              <th>
+                <div class="flex align-items-center">
+                  Faculty
+                  <p-columnFilter display="menu" field="user.fullName"
+                                  matchMode="in" type="text">
+                  </p-columnFilter>
+                </div>
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template let-forum pTemplate="body">
+            <tr>
+              <td class="ff-inter">
+                <div class="h5 fs-7 fw-bold">
+                  <a [href]="'/forum/'+forum.id"
+                     target="_blank">{{forum.title}}</a>
+                  <span *ngIf="forum.faq"
+                        class="text-danger fw-bold ps-1">[FAQ]</span>
+                </div>
+                <span class="fs-8">{{ forum.content }}</span>
+              </td>
+              <td>
+                <span class="fs-7 ff-inter">{{forum.topic}}</span>
+              </td>
+              <td>
+                <span class="fs-7 ff-inter">{{forum.user.fullName}}</span>
+              </td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage">
+            <tr>
+              <td colspan="7">No forums found.</td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="row">
+        <div class="col">
+          <div class="h6 ff-inter text-secondary mt-2">Latest News & Announcements</div>
+          <div class="announcements">
+            <p-table
+              #dt1
+              [globalFilterFields]="['title', 'content', 'createdBy.fullName']"
+              [paginator]="true"
+              [rowsPerPageOptions]="[10, 25, 50]"
+              [rows]="10"
+              [showCurrentPageReport]="false"
+              [value]="announcements"
+              dataKey="id"
+            >
+              <ng-template pTemplate="caption">
+                <div class="flex">
+              <span class="p-input-icon-left ml-auto">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input (input)="dt1.filterGlobal(getInput($event), 'contains')" pInputText placeholder="Search keyword"
+                       type="text"/>
+            </span>
+                </div>
+              </ng-template>
+              <ng-template pTemplate="header">
+                <tr>
+                  <th width="65%">
+                    <div class="flex align-items-center">
+                      Announcement
+                    </div>
+                  </th>
+                  <th>
+                    <div class="flex align-items-center">
+                      Faculty
+                      <p-columnFilter display="menu" field="createdBy.fullName"
+                                      matchMode="in" type="text">
+                      </p-columnFilter>
+                    </div>
+                  </th>
+                </tr>
+              </ng-template>
+              <ng-template let-a pTemplate="body">
+                <tr>
+                  <td class="ff-inter">
+                    <div class="h5 fs-7 fw-bold">{{a.title}}</div>
+                    <span class="fs-8">{{ a.description }}</span>
+                  </td>
+                  <td>
+                    <span class="fs-7 ff-inter">{{a.createdBy.fullName}}</span>
+                  </td>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="emptymessage">
+                <tr>
+                  <td colspan="7">No Announcements found.</td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+        </div>
+        <div class="col">
+          <div class="h6 ff-inter text-secondary mt-2">Latest Resources</div>
+          <div class="resources mt-2">
+            <p-table
+              #dt1
+              [globalFilterFields]="['title', 'description', 'uploadedBy.fullName']"
+              [paginator]="true"
+              [rowsPerPageOptions]="[10, 25, 50]"
+              [rows]="10"
+              [showCurrentPageReport]="false"
+              [value]="resources"
+              dataKey="id"
+            >
+              <ng-template pTemplate="caption">
+                <div class="flex">
+              <span class="p-input-icon-left ml-auto">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input (input)="dt1.filterGlobal(getInput($event), 'contains')" pInputText placeholder="Search keyword"
+                       type="text"/>
+            </span>
+                </div>
+              </ng-template>
+              <ng-template pTemplate="header">
+                <tr>
+                  <th width="65%">
+                    <div class="flex align-items-center">
+                      Resources
+                    </div>
+                  </th>
+                  <th>
+                    <div class="flex align-items-center">
+                      Faculty
+                      <p-columnFilter display="menu" field="uploadedBy.fullName"
+                                      matchMode="in" type="text">
+                      </p-columnFilter>
+                    </div>
+                  </th>
+                </tr>
+              </ng-template>
+              <ng-template let-r pTemplate="body">
+                <tr>
+                  <td class="ff-inter">
+                    <div class="h5 fs-7 fw-bold">
+                      <a [href]="'http://localhost:5001/api'+r.filePath" class="text-primary-emphasis">{{r.title}}</a>
+                    </div>
+                    <span class="fs-8">{{ r.description }}</span>
+                  </td>
+                  <td>
+                    <span class="fs-7 ff-inter">{{r.uploadedBy.fullName}}</span>
+                  </td>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="emptymessage">
+                <tr>
+                  <td colspan="7">No Resources found.</td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-8">
+
+    </div>
+    <div class="col-4">
+
+    </div>
+  </div>
+</div>

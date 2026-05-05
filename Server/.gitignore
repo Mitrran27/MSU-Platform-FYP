@@ -1,0 +1,19 @@
+# 🔥 MUST HAVE (this is your main issue)
+node_modules/
+
+# Frontend builds
+dist/
+build/
+.next/
+out/
+
+# Logs & env
+*.log
+.env
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+.vscode/
+.idea/

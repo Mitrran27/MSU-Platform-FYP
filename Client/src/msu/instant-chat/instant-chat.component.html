@@ -1,0 +1,77 @@
+<div class="p-3" style="height: 100%">
+  <div class="card row w-100 h-100 p-3 m-auto">
+    <div class="left col-4 border-1 border-end h-100 overflow-auto">
+      <div class="bg-body-tertiary">
+        <h5 class="ff-poppins">Active Users</h5>
+        <hr>
+        <div (click)="onFacultySelected(u.id)"
+             *ngFor="let u of users"
+             class="card p-2 mt-1 border-1 d-flex flex-row justify-content-start align-items-center cursor-pointer">
+          <img alt="faculty" class="rounded-circle" height="40" [src]="u.profileImage||'../../assets/teacher.png'" width="40">
+          <div class="ms-3">
+            <span class="p-0 ff-inter fs-7">{{u.fullName}}</span> <br>
+            <span class="small ff-inter">
+              <span *ngIf="u.connected" class="text-success fw-bold">
+                Active
+              </span>
+               <span *ngIf="!u.connected" class="text-body-secondary">
+                Offline
+              </span>
+
+            </span>
+          </div>
+          <div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="right col-8 h-100">
+
+      <div *ngIf="selectedReceiver===''"
+           class="d-flex justify-content-center align-items-center flex-column w-100 h-100">
+        Select a faculty to start Chatting
+      </div>
+
+      <div *ngIf="selectedReceiver!==''" class="d-flex justify-content-end flex-column w-100 h-100">
+        <div class="chat-container d-flex justify-content-end w-100">
+          <div class="chats w-100">
+            <div *ngFor="let c of selectedChats" class="mt-1">
+              <div *ngIf="c.sender===localStorage.getItem('userId')" class="d-flex flex-row justify-content-end">
+                <div class="card p-2 bg-body-tertiary">
+                  <span class="ff-poppins">{{c.content}}</span>
+                  <span class="small text-secondary">
+                  <small>{{c.timestamp | date:'short'}}</small>
+                </span>
+                </div>
+              </div>
+              <div *ngIf="c.sender!==localStorage.getItem('userId')" class="d-flex justify-content-start flex-row">
+                <div class="card p-2 bg-body-secondary">
+                  <span class="ff-poppins">{{c.content}}</span>
+                  <span class="small text-secondary">
+                  <small>{{c.timestamp | date:'short'}}</small>
+                </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="chat-input mt-4">
+          <div class="input-group">
+            <span class="input-group-text">
+              <i class="fa-regular fa-comment-dots"></i>
+            </span>
+            <input [(ngModel)]="chat.content" aria-label="With textarea" class="form-control"
+                   name="content"/>
+            <button (click)="sendMessage()" class="input-group-text btn btn-primary" id="basic-addon2">
+              <i class="fa-solid fa-paper-plane"></i> Send
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

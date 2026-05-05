@@ -1,0 +1,183 @@
+<div>
+  <div class="container">
+    <div class="h3 text-secondary  mt-3">
+      My Forums
+    </div>
+  </div>
+  <div class="add-forum my-2 w-100 d-flex justify-content-end pe-5">
+
+  </div>
+
+  <div class="container">
+    <p-table
+      #dt1
+      [globalFilterFields]="['title', 'content', 'topic', 'user.fullName']"
+      [paginator]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      [value]="forums"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} forum posts"
+      dataKey="id"
+    >
+      <ng-template pTemplate="caption">
+        <div class="d-flex justify-content-between">
+              <span class="p-input-icon-left ml-auto">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input (input)="dt1.filterGlobal(getInput($event), 'contains')" pInputText placeholder="Search keyword"
+                       type="text"/>
+            </span>
+          <button (click)="onAddForum()" class="btn btn-primary btn-sm ff-poppins">
+            <i class="fa-solid fa-plus pe-3"></i>Add New Forum
+          </button>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th width="65%">
+            <div class="flex align-items-center">
+              Forum
+            </div>
+          </th>
+          <th>
+            <div class="flex align-items-center">
+              Topic
+              <p-columnFilter display="menu" field="topic" type="text"></p-columnFilter>
+            </div>
+          </th>
+          <th>
+            <div class="flex align-items-center">
+              Faculty
+              <p-columnFilter [showAddButton]="false" [showMatchModes]="false" [showOperator]="false" display="menu"
+                              field="user.fullName" matchMode="in">
+                <ng-template pTemplate="header">
+                  <div class="px-3 pt-3 pb-0">
+                    <span class="font-bold">Faculty Picker</span>
+                  </div>
+                </ng-template>
+                <ng-template let-filter="filterCallback" let-value pTemplate="filter">
+                  <p-multiSelect (onChange)="filter($event.value)" [ngModel]="value" [options]="users"
+                                 optionLabel="fullName" placeholder="Any">
+                    <ng-template let-u pTemplate="item">
+                      <div class="inline-block vertical-align-middle">
+                        <span class="ml-1 mt-1">{{ u.fullName }}</span>
+                      </div>
+                    </ng-template>
+                  </p-multiSelect>
+                </ng-template>
+              </p-columnFilter>
+            </div>
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template let-forum pTemplate="body">
+        <tr>
+          <td class="ff-inter">
+            <div class="h5 fs-7 fw-bold">
+              <a [href]="'/forum/'+forum.id"
+                 target="_blank">{{forum.title}}</a>
+              <span *ngIf="forum.faq"
+                    class="text-danger fw-bold ps-1">[FAQ]</span>
+            </div>
+            <span class="fs-8">{{ forum.content }}</span>
+          </td>
+          <td>
+            <span class="fs-7 ff-inter">{{forum.topic}}</span>
+          </td>
+          <td>
+            <span class="fs-7 ff-inter">{{forum.user.fullName}}</span>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="7">No forums found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+
+<!--  <div class="filter-container w-50 mx-auto px-1">-->
+<!--    <div class="card bg-white d-flex flex-row justify-content-around align-items-center rounded-2 p-2 ff-inter gap-3">-->
+<!--      <div class="input-group">-->
+<!--        <input aria-label="search forums" class="form-control" placeholder="search forum" type="text">-->
+<!--        <span class="input-group-text">-->
+<!--          <i class="fa-solid fa-magnifying-glass"></i>-->
+<!--        </span>-->
+<!--      </div>-->
+<!--      <div>-->
+<!--        <button class="btn btn-sm btn-outline-primary">Search</button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="forum-container p-2 mt-1 overflow-y-auto">-->
+<!--    <div *ngFor="let f of forums" class="forum-card card mb-2 p-2 bg-white shadow w-75 mx-auto">-->
+<!--      <div class="user-info p-2 d-flex flex-row align-items-center">-->
+<!--        <img alt="teacher" src="../../../assets/teacher.png" width="45">-->
+<!--        <div class="d-flex px-2  flex-column justify-content-start align-items-start small">-->
+<!--          <span>{{f.user?.fullName}}</span>-->
+<!--          <span class="small text-body-tertiary">{{f.postedOn | date:'short'}}</span>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="title px-2 fw-bold">-->
+<!--        {{f.title}}-->
+<!--      </div>-->
+<!--      <div class="content px-2 ff-inter overflow-auto" style="height: fit-content;max-height: 100px">-->
+<!--        {{f.content}}-->
+<!--        &lt;!&ndash;        <a class="px-2" href="/">see more</a>&ndash;&gt;-->
+<!--      </div>-->
+<!--      <hr>-->
+<!--      <div class="actions d-flex justify-content-around ff-inter mb-2">-->
+<!--        <button class="btn p-0 shadow-none like d-flex align-items-center">-->
+<!--          <i class="fa-regular fa-thumbs-up fs-5"></i>-->
+<!--          &lt;!&ndash;          <i class="fa-solid fa-thumbs-up "></i>&ndash;&gt;-->
+<!--          <span class="small px-2">Like</span>-->
+<!--        </button>-->
+<!--        <button class="btn p-0 shadow-none comment d-flex align-items-center">-->
+<!--          <i class="fa-regular fa-comment fs-5 "></i>-->
+<!--          <span class="small px-2">Comment</span>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <div class="comment-section">-->
+
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  -->
+<!--  -->
+  <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" data-bs-backdrop="static" id="addModal"
+       tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 ff-inter" id="exampleModalLabel">Add New Forum</h1>
+          <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="addForum()">
+            <div class="form-floating mb-3">
+              <input [(ngModel)]="forum.title" class="form-control" id="forumTitle" name="title" placeholder="Title"
+                     type="text">
+              <label for="forumTitle">Title</label>
+            </div>
+            <div class="form-floating mb-3">
+            <textarea [(ngModel)]="forum.content" class="form-control" id="forumContent" name="content"
+                      placeholder="name@example.com" style="min-height: 150px"></textarea>
+              <label for="forumContent">Content</label>
+            </div>
+            <div class="form-floating">
+              <input [(ngModel)]="forum.topic" class="form-control" id="forumTopic" name="topic" placeholder="Topic"
+                     type="text">
+              <label for="forumTopic">Topic</label>
+            </div>
+            <div class="my-3 d-flex justify-content-end">
+              <button class="btn btn-primary" type="submit">
+                Save
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,155 @@
+﻿What is this platform?
+This is the MSU Learning Platform, a web-based system designed for higher education academicians at MSU to share resources, communicate, and collaborate.
+
+Who can use this platform?
+This platform is designed for higher education academicians including lecturers, professors, and academic staff at MSU.
+
+What can I do on this platform?
+You can upload and share academic resources, participate in forum discussions, send messages to colleagues, view announcements, and use the chatbot for assistance.
+
+How do I register an account?
+To register, click the Register button on the login page and fill in your full name, email address, and password, then click Submit.
+
+How do I log in?
+Enter your registered email address and password on the login page, then click the Login button to access your account.
+
+I forgot my password. What should I do?
+Please contact your system administrator to reset your password as the platform currently does not have a self-service password reset feature.
+
+How do I update my profile?
+Click on your profile icon or navigate to the Profile section, then update your full name, bio, department, phone number, or profile picture and save the changes.
+
+How do I change my profile picture?
+Go to your Profile section, click on the profile image area, upload a new image file, and save your changes.
+
+How do I upload a resource?
+Navigate to the Resources section, click the Upload button, fill in the title and description, select your file, and click Submit to upload it.
+
+What file types can I upload?
+The platform supports common academic file types including PDF, Word documents, PowerPoint presentations, and other standard document formats up to 10MB in size.
+
+How do I download a resource?
+Go to the Resources section, find the resource you want, and click the Download button to save it to your device.
+
+How do I search for resources?
+Browse the Resources section and use the search or filter options to find resources by title, type, or uploader.
+
+How do I create a forum post?
+Navigate to the Forum section, click the New Post button, enter your title, topic, and content, then click Submit to publish your post.
+
+How do I comment on a forum post?
+Open a forum post and scroll to the comments section at the bottom, type your comment in the input box, and click Submit.
+
+How do I like a forum post?
+Click the Like button or thumbs up icon on any forum post to show your appreciation for the content.
+
+What is a FAQ post?
+A FAQ post is a forum post that has been marked as a Frequently Asked Question. These posts are highlighted to help users find commonly needed information quickly.
+
+How do I mark a post as FAQ?
+When creating or editing a forum post, enable the Mark as FAQ option to flag it as a frequently asked question.
+
+How do I delete my forum post?
+Open your forum post and click the Delete button. Note that you can only delete posts that you have created yourself.
+
+How do I send a message to another user?
+Go to the Messages or Chat section, select the user you want to message from the list, type your message in the input box, and press Send.
+
+How do I view my chat history?
+Navigate to the Messages or Instant Chat section and select a conversation from the list to view the full chat history with that user.
+
+Who can I send messages to?
+You can send messages to any registered academician on the platform.
+
+Where can I see announcements?
+Announcements are displayed on the Dashboard when you first log in, and you can also find them in the Announcements section.
+
+How do I create an announcement?
+Navigate to the Announcements section and click the New Announcement button, fill in the title and description, then click Submit to post it.
+
+Who can create announcements?
+Any registered academician on the platform can create and post announcements.
+
+What is the Dashboard?
+The Dashboard is the main page after you log in. It shows you an overview of recent announcements, forum posts, resources, and platform statistics.
+
+How do I log out?
+Click the Logout button in the navigation bar or header to securely log out of your account.
+
+What should I do if I encounter an error?
+If you encounter an error, try refreshing the page first. If the problem persists, contact your system administrator with details of the error.
+
+Is my data secure on this platform?
+Yes, your data is stored securely in the platform database and your account is protected by your login credentials.
+
+Can I edit my forum post after publishing?
+Yes, you can edit your forum post after publishing by opening the post and clicking the Edit button.
+
+How do I view other users profiles?
+You can view basic profile information of other academicians when browsing forum posts, resources, or the user list in the messaging section.
+
+What departments are available on the platform?
+The platform supports academicians from all departments at MSU. Your department information can be set in your profile settings.
+
+How do I contact support?
+For technical support or issues with the platform, please contact your system administrator or the MSU IT department.
+
+What is the maximum file size for uploads?
+The maximum file size for resource uploads is 10MB per file.
+
+Can I upload multiple files at once?
+Currently the platform supports uploading one file at a time per resource entry.
+
+How do I view all forum posts?
+Navigate to the Forum section to see a list of all published forum posts from all academicians on the platform.
+
+What is the chatbot for?
+The chatbot is here to help you navigate the platform, answer common questions, and provide guidance on how to use the various features of the MSU Learning Platform.
+
+What can the chatbot help me with?
+The chatbot can help you with questions about registering, logging in, uploading resources, using the forum, sending messages, viewing announcements, and general platform navigation.
+
+Who are you?
+I am the MSU Learning Platform assistant chatbot. I am here to help academicians use the platform effectively.
+
+Hello
+Hello! Welcome to the MSU Learning Platform. How can I assist you today?
+
+Hi
+Hi there! How can I help you with the MSU Learning Platform today?
+
+Thank you
+You are welcome! Feel free to ask if you have any other questions about the platform.
+
+How does the forum work?
+The forum allows academicians to post discussions, share knowledge, ask questions, and engage with colleagues. You can create posts, comment on others posts, and like content you find useful.
+
+Can I delete my account?
+To delete your account, please contact your system administrator as account deletion requires administrative access.
+
+How do I update my email address?
+To update your email address, go to your Profile section and update the email field, then save your changes.
+
+How do I add my phone number?
+Go to your Profile section, enter your phone number in the phone number field, and save your changes.
+
+What is my department field for?
+The department field in your profile identifies which academic department you belong to at MSU, helping colleagues identify your area of expertise.
+
+How do I find a specific user to message?
+In the Instant Chat or Messages section, browse the list of registered users to find the person you want to contact.
+
+Are messages private?
+Yes, messages sent through the platform are private and can only be seen by the sender and the recipient.
+
+How do I know if I have new messages?
+Check the Messages or Chat section regularly for new conversations. The platform may show unread indicators on new messages.
+
+Can I share resources with specific people?
+Resources uploaded to the platform are accessible to all registered academicians. Currently there is no option to restrict resources to specific users.
+
+How do I edit my resource after uploading?
+Navigate to the Resources section, find your uploaded resource, and look for an Edit option to update the title, description, or file.
+
+How do I delete a resource?
+Find your resource in the Resources section and click the Delete button to remove it from the platform.

@@ -1,0 +1,116 @@
+<div class="container-fluid">
+  <div class="container h3 my-2 text-secondary">
+    My Resources
+  </div>
+  <div class="container mt-3 mx-auto w-100 px-md-5">
+    <p-table
+      #dt1
+      [globalFilterFields]="['title', 'description', 'uploadedBy.name']"
+      [loading]="loading"
+      [paginator]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      [value]="resources"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      dataKey="id"
+    >
+      <ng-template pTemplate="caption">
+        <div class="d-flex justify-content-between">
+          <span class="p-input-icon-left w-25">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input (input)="dt1.filterGlobal(getInputValue($event.target), 'contains')" class="w-100"
+                   pInputText
+                   placeholder="Search Resource with keywords"
+                   type="text"/>
+          </span>
+          <button (click)="showAddModal()" class="btn btn-sm btn-primary">
+            <i class="fa-solid fa-plus"></i>&nbsp;
+            Add New Resource
+          </button>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr class="border">
+          <th style="min-width:15rem">
+            <div class="flex align-items-center">
+              Resource
+              <p-columnFilter display="menu" field="description" type="text"></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width:15rem">
+            <div class="flex align-items-center">
+              Faculty
+              <p-columnFilter display="menu" field="uploadedBy.fullName"
+                              matchMode="in" type="text">
+              </p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width:10rem">
+            <div class="flex align-items-center">
+
+            </div>
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template let-r pTemplate="body">
+        <tr class="border">
+          <td>
+            <span class="fw-bold ff-poppins">{{r.title}}</span> <br>
+            <span class="small">{{r.description}}</span>
+          </td>
+          <td>
+            <span class="ff-poppins">{{r.uploadedBy.fullName}}</span><br>
+            <span class="small ff-inter">{{r.uploadedBy.email}}</span>
+          </td>
+          <td>
+            <a [href]="'http://localhost:5001/api'+r.filePath" class="btn btn-sm btn-dark" target="_blank">
+              <i class="fa-solid fa-download"></i> Download
+            </a>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="7">No Resources found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  <!-- Modal -->
+  <div aria-hidden="true" aria-labelledby="staticBackdropLabel" class="modal fade" data-bs-backdrop="static"
+       data-bs-keyboard="false"
+       id="addModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Add New Resource</h1>
+          <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="addNewResource()">
+            <div class="form-floating mb-3">
+              <input [(ngModel)]="resource.title" class="form-control" id="floatingInput" name="title"
+                     placeholder="title" type="text">
+              <label for="floatingInput">Title</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input [(ngModel)]="resource.description" class="form-control" id="floatingPassword" name="description"
+                     placeholder="Password" type="text">
+              <label for="floatingPassword">Description</label>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="formFile">Select Resource File</label>
+              <input (change)="onFileSelected($event)" class="form-control" id="formFile" type="file">
+            </div>
+            <div class="d-flex justify-content-end">
+              <button class="btn btn-primary" type="submit">
+                Save
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

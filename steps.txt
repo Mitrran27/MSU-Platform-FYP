@@ -1,0 +1,11 @@
+FYP
+1. server
+$env:PATH += ";C:\Users\user\maven\apache-maven-3.9.15\bin"
+mvn spring-boot:run
+
+2. client
+npm start
+
+3. chatbot
+venv\Scripts\activate
+python -m uvicorn main:app --reload --port 8000
